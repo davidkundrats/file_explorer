@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <filesystem>
 #include "navigation.h"
+namespace fs = std::filesystem;
 void switch_logic();
 
 void switch_logic(){ 
@@ -10,8 +11,10 @@ void switch_logic(){
         std::cout << "1. Change current path" << '\n';
         std::cout << "2. Change current path upward" << '\n';
         std::cout << "3. Display current directory contents" << '\n';
-        std::cout << "4. Exit" << std::endl;
+        std::cout << "4. Copy directory contents to another directory" << '\n'; 
+        std::cout << "5. Exit" << std::endl;
         std::cin >> choice;
+
         switch(choice){
             case 1:
                 changePWD();
@@ -22,7 +25,9 @@ void switch_logic(){
             case 3:
                 display_directory_contents();
                 break;
-            case 4:
+            case 4: 
+               copy_directory_helper();
+            case 5:
                 std::cout << "Exiting..." << '\n';
                 break;
             default:
@@ -30,6 +35,6 @@ void switch_logic(){
                 break;
         }
     }
-    while(choice != 4);
+    while(choice != 5);
 
 }
